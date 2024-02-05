@@ -65,30 +65,28 @@ public class MudCodeHighlight : MudComponentBase, IDisposable
 
 	protected override void BuildRenderTree(RenderTreeBuilder builder)
 	{
-		var i = 0;
-
-		builder.OpenElement(i++, "div");
-		builder.AddAttribute(i++, "class", "snippet-clipboard-content overflow-auto");
+		builder.OpenElement(0, "div");
+		builder.AddAttribute(1, "class", "snippet-clipboard-content overflow-auto");
 
 		// Copy button
-		builder.OpenComponent<MudIconButton>(i++);
-		builder.AddAttribute(i++, nameof(MudIconButton.Icon), Icons.Material.Rounded.ContentCopy);
-		builder.AddAttribute(i++, nameof(MudIconButton.Variant), Variant.Filled);
-		builder.AddAttribute(i++, nameof(MudIconButton.Color), Color.Primary);
-		builder.AddAttribute(i++, nameof(MudIconButton.Size), Size.Medium);
-		builder.AddAttribute(i++, nameof(MudIconButton.Class), "snippet-clipboard-copy-icon m-2");
-		builder.AddAttribute(i++, nameof(MudIconButton.OnClick), EventCallback.Factory.Create<MouseEventArgs>(this, CopyTextToClipboardAsync));
+		builder.OpenComponent<MudIconButton>(2);
+		builder.AddAttribute(3, nameof(MudIconButton.Icon), Icons.Material.Rounded.ContentCopy);
+		builder.AddAttribute(4, nameof(MudIconButton.Variant), Variant.Filled);
+		builder.AddAttribute(5, nameof(MudIconButton.Color), Color.Primary);
+		builder.AddAttribute(6, nameof(MudIconButton.Size), Size.Medium);
+		builder.AddAttribute(7, nameof(MudIconButton.Class), "snippet-clipboard-copy-icon m-2");
+		builder.AddAttribute(8, nameof(MudIconButton.OnClick), EventCallback.Factory.Create<MouseEventArgs>(this, CopyTextToClipboardAsync));
 		builder.CloseComponent();
 
 		// Code block
-		builder.OpenElement(i++, "pre");
-		builder.OpenElement(i++, "code");
+		builder.OpenElement(9, "pre");
+		builder.OpenElement(10, "code");
 
 		if (!string.IsNullOrEmpty(Language))
-			builder.AddAttribute(i++, "class", $"language-{Language}");
+			builder.AddAttribute(11, "class", $"language-{Language}");
 
-		builder.AddElementReferenceCapture(i++, x => _ref = x);
-		builder.AddContent(i++, Text);
+		builder.AddElementReferenceCapture(12, x => _ref = x);
+		builder.AddContent(13, Text);
 
 		builder.CloseElement();
 		builder.CloseElement();

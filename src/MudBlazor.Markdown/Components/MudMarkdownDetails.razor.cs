@@ -6,8 +6,6 @@
 /// </summary>
 internal sealed class MudMarkdownDetails : ComponentBase
 {
-	private int _elementIndex;
-
 	[Parameter]
 	public RenderFragment? TitleContent { get; set; }
 
@@ -22,10 +20,8 @@ internal sealed class MudMarkdownDetails : ComponentBase
 
 	protected override void BuildRenderTree(RenderTreeBuilder builder)
 	{
-		_elementIndex = 0;
-
-		builder.OpenElement(_elementIndex++, "div");
-		builder.AddAttribute(_elementIndex++, "class", "mud-expand-panel mud-elevation-1 mud-expand-panel-border");
+		builder.OpenElement(0, "div");
+		builder.AddAttribute(1, "class", "mud-expand-panel mud-elevation-1 mud-expand-panel-border");
 
 		BuildTitle(builder);
 		BuildContent(builder);
@@ -35,20 +31,20 @@ internal sealed class MudMarkdownDetails : ComponentBase
 
 	private void BuildTitle(RenderTreeBuilder builder)
 	{
-		builder.OpenElement(_elementIndex++, "div");
-		builder.AddAttribute(_elementIndex++, "class", "mud-expand-panel-header mud-ripple");
-		builder.AddAttribute(_elementIndex++, "onclick", EventCallback.Factory.Create(this, OnHeaderClick));
+		builder.OpenElement(2, "div");
+		builder.AddAttribute(3, "class", "mud-expand-panel-header mud-ripple");
+		builder.AddAttribute(4, "onclick", EventCallback.Factory.Create(this, OnHeaderClick));
 
 		// Text
-		builder.OpenElement(_elementIndex++, "div");
-		builder.AddAttribute(_elementIndex++, "class", "mud-expand-panel-text");
-		builder.AddContent(_elementIndex++, TitleContent);
+		builder.OpenElement(5, "div");
+		builder.AddAttribute(6, "class", "mud-expand-panel-text");
+		builder.AddContent(7, TitleContent);
 		builder.CloseElement();
 
 		// Collapse icon
-		builder.OpenComponent<MudIcon>(_elementIndex++);
-		builder.AddAttribute(_elementIndex++, nameof(MudIcon.Icon), Icons.Material.Filled.ExpandMore);
-		builder.AddAttribute(_elementIndex++, "class", IconClasses);
+		builder.OpenComponent<MudIcon>(8);
+		builder.AddAttribute(9, nameof(MudIcon.Icon), Icons.Material.Filled.ExpandMore);
+		builder.AddAttribute(10, "class", IconClasses);
 		builder.CloseComponent();
 
 		builder.CloseElement();
@@ -56,14 +52,14 @@ internal sealed class MudMarkdownDetails : ComponentBase
 
 	private void BuildContent(RenderTreeBuilder builder)
 	{
-		builder.OpenComponent<MudCollapse>(_elementIndex++);
-		builder.AddAttribute(_elementIndex++, nameof(MudCollapse.Expanded), IsExpanded);
+		builder.OpenComponent<MudCollapse>(11);
+		builder.AddAttribute(12, nameof(MudCollapse.Expanded), IsExpanded);
 
-		builder.AddAttribute(_elementIndex++, nameof(MudCollapse.ChildContent), (RenderFragment)(contentBuilder =>
+		builder.AddAttribute(13, nameof(MudCollapse.ChildContent), (RenderFragment)(contentBuilder =>
 		{
-			contentBuilder.OpenElement(_elementIndex++, "div");
-			contentBuilder.AddAttribute(_elementIndex++, "class", "mud-expand-panel-content");
-			contentBuilder.AddContent(_elementIndex++, ChildContent);
+			contentBuilder.OpenElement(14, "div");
+			contentBuilder.AddAttribute(15, "class", "mud-expand-panel-content");
+			contentBuilder.AddContent(16, ChildContent);
 			contentBuilder.CloseElement();
 		}));
 
