@@ -41,6 +41,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include="package-lock.json" />
+	  <Content Include="package.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Folder Include="wwwroot\" />
 	</ItemGroup>
 
