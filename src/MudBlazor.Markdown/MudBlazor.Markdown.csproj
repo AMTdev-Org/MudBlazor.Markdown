@@ -1,21 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<RootNamespace>MudBlazor</RootNamespace>
-		<Version>0.1.3</Version>
-		<Authors>MyNihongo</Authors>
+		<Version>0.1.6</Version>
+		<Authors>MyNihongo, AMTdev-Org</Authors>
 		<Description>Markdown component for MudBlazor (https://mudblazor.com/)</Description>
-		<Copyright>Copyright © 2023 MyNihongo</Copyright>
+		<Copyright>Copyright © 2023 MyNihongo, AMTdev-Org</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<RepositoryUrl>https://github.com/MyNihongo/MudBlazor.Markdown</RepositoryUrl>
+		<RepositoryUrl>https://github.com/AMTdev-Org/MudBlazor.Markdown</RepositoryUrl>
 		<PackageProjectUrl>https://mudblazor.com/</PackageProjectUrl>
 		<PackageIcon>favico.png</PackageIcon>
 		<PackageTags>mudblazor, blazor, markdown</PackageTags>
 		<GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
-		<PackageReleaseNotes>https://github.com/MyNihongo/MudBlazor.Markdown/releases</PackageReleaseNotes>
+		<PackageReleaseNotes>https://github.com/AMTdev-Org/MudBlazor.Markdown/releases</PackageReleaseNotes>
 		<Title>MudBlazor Markdown</Title>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>

@@ -133,18 +133,31 @@ public class MudCodeHighlight : MudComponentBase, IDisposable
 
 	private async Task CopyTextToClipboardAsync(MouseEventArgs args)
 	{
-		var ok = await Js.InvokeAsync<bool>("copyTextToClipboard", Text)
-			.ConfigureAwait(false);
-
-		if (ok)
-			return;
-
-		var clipboardService = ServiceProvider?.GetService<IMudMarkdownClipboardService>();
-
-		if (clipboardService != null)
+		try
 		{
-			await clipboardService.CopyToClipboardAsync(Text)
+			var ok = await Js.InvokeAsync<bool>("copyTextToClipboard", Text)
 				.ConfigureAwait(false);
+
+			if (ok)
+				return;
+
+			var clipboardService = ServiceProvider?.GetService<IMudMarkdownClipboardService>();
+
+			if (clipboardService != null)
+			{
+				await clipboardService.CopyToClipboardAsync(Text)
+					.ConfigureAwait(false);
+			}
 		}
+		catch (Exception ex)
+		{
+            //invoking the native copyTextToClipboard function failed; try the registered clipboard service
+            var clipboardService = ServiceProvider?.GetService<IMudMarkdownClipboardService>();
+
+            if (clipboardService != null)
+            {
+                await clipboardService.CopyToClipboardAsync(Text);
+            }
+        }
 	}
 }
