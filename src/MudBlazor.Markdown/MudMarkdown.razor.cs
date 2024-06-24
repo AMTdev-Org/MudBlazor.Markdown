@@ -91,6 +91,10 @@ public class MudMarkdown : ComponentBase, IDisposable
 		if (string.IsNullOrEmpty(Value))
 			return;
 
+		//Markdown doesn't recognize the Razor language for fenced code blocks; replace it (and its aliases) with normal HTML
+		var razorAliases = new List<string> { "```razor", "```cshtml", "```razor-cshtml" };
+		razorAliases.ForEach(ra => Value = Value.Replace(ra, "```html"));
+
 		var pipeline = GetMarkdownPipeLine();
 		var parsedText = Markdown.Parse(Value, pipeline);
 		if (parsedText.Count == 0)
